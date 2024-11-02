@@ -1,14 +1,18 @@
 :root {
-    --fill: 43, 43, 43;
-    --background: 51, 51, 51;
-    --brand: 255, 105, 180;
-    --ascent: 255, 20, 147;
+    --fill: rgb(85, 107, 47);
+    --primary: rgb(255, 182, 193);
+    --secondary: rgb(255, 105, 180);
+    --accent: rgb(255, 20, 147);
+    --background: rgb(245, 245, 245);
+    --neutral: rgb(33, 33, 33);
+    --row-size: 60px;
+    --element-margin: 10px;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: rgba(var(--fill));
-    color: rgba(var(--brand));
+    font-family: Impact, Arial, Helvetica, sans-serif;
+    background-color: var(--neutral);
+    color: var(--primary);
     height: 100vh;
     margin: 0;
     padding: 0;
@@ -17,24 +21,122 @@ body {
     align-items: center;
 }
 
-.header, .footer {
-    width: 100vw;
-    text-align: center;
-}
-
-.header {
-    font-weight: bolder;
-    font-size: 30px;
-    letter-spacing: 1.5px;
-    padding: 6px 0;
+.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .footer {
-    position: fixed;
-    bottom: 0;
-    padding: 12px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
     font-size: 12px;
     color: rgb(209 213 219);
     background-color: rgb(17 24 39);
     font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+.calculator {
+    max-height: 350px;
+    max-width: 200px;
+    background-color: var(--fill);
+    border-radius: 20px;
+    padding: var(--element-margin);
+    display: flex;
+    flex-direction: column;
+    flex: 1
+}
+
+
+
+.calculator * button {
+    cursor: pointer;
+    border: none;
+    font-size: 30px;
+    font-weight: 900;
+    border-radius: 10px;
+    /* color: var(--neutral);
+    width: var(--row-size);
+    height: var(--row-size);
+    margin: var(--element-margin); */
+    transition: transform 0.2s ease-in-out;
+}
+
+.calculator * button:hover {
+    transform: scale(1.1);
+}
+
+.calculator * button:active {
+    transform: scale(0.9);
+}
+
+/* 
+button {
+    cursor: pointer;
+    border: none;
+    font-size: 30px;
+    font-weight: 900;
+    border-radius: 10px;
+    color: var(--neutral);
+    width: var(--row-size);
+    height: var(--row-size);
+    margin: var(--element-margin);
+    transition: transform 0.2s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+button:active {
+    transform: scale(0.9);
+}
+ 
+
+
+
+
+.calculator,
+.row {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.calculator {
+    flex-direction: column;
+    background-color: var(--fill);
+    border-radius: 20px;
+    padding: var(--element-margin);
+}
+
+.screen {
+    display: flex;
+    justify-content: end;
+    height: var(--row-size);
+    width: calc(100% - var(--element-margin) * 2);
+    margin: var(--element-margin);
+    background: var(--neutral);
+    border-radius: 10px;
+}
+
+.number {
+    background: var(--primary);
+}
+
+.operator {
+    background: var(--accent);
+}
+
+.special {
+    background: var(--secondary);
+}
+
+#zero {
+    width: calc( ( var(--row-size) * 2 ) + ( var(--element-margin) * 2 ) );
+}
+*/
