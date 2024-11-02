@@ -9,72 +9,95 @@
     --element-margin: 10px;
 }
 
+body,
+.content,
+.footer,
+.calculator {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
 body {
-    font-family: Impact, Arial, Helvetica, sans-serif;
     background-color: var(--neutral);
     color: var(--primary);
+    flex-direction: column;
+    font-family: Impact, Arial, Helvetica, sans-serif;
     height: 100vh;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .content {
-    flex-grow: 1;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
+    flex-grow: 1;
 }
 
 .footer {
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40px;
-    font-size: 12px;
-    color: rgb(209 213 219);
     background-color: rgb(17 24 39);
+    color: rgb(209 213 219);
     font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    height: 40px;
+    width: 100vw;
 }
 
 .calculator {
-    max-height: 350px;
-    max-width: 200px;
-    background-color: var(--fill);
+    background: var(--fill);
+    border-radius: 120px 120px 200px 200px;
+    padding: 20px;
+}
+
+.middle {
+    margin: 0 5px;
+    padding: 10px;
+    background: rgba(33, 33, 33, 0.5);
     border-radius: 20px;
-    padding: var(--element-margin);
+}
+
+.branding {
+    cursor: default;
     display: flex;
-    flex-direction: column;
-    flex: 1
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    font-size: 24px;
 }
 
+.branding * {
+    padding: 2px;
+}
 
+#ath {
+    letter-spacing: 2px;
+    font-size: 12px;
+    font-style: italic;
+}
 
-.calculator * button {
-    cursor: pointer;
-    border: none;
-    font-size: 30px;
-    font-weight: 900;
+.screen {
     border-radius: 10px;
-    /* color: var(--neutral);
-    width: var(--row-size);
-    height: var(--row-size);
-    margin: var(--element-margin); */
-    transition: transform 0.2s ease-in-out;
+    background: var(--neutral);
+    width: 260px;
+    aspect-ratio: 1 / 1;
 }
 
-.calculator * button:hover {
-    transform: scale(1.1);
+.evaluation {
+    
 }
 
-.calculator * button:active {
-    transform: scale(0.9);
+.rollerdex {
 }
 
-/* 
+.left .row {
+    display: flex;
+    justify-content: right;
+}
+
+.right .row {
+    display: flex;
+    justify-content: left;
+}
+
 button {
     cursor: pointer;
     border: none;
@@ -82,61 +105,41 @@ button {
     font-weight: 900;
     border-radius: 10px;
     color: var(--neutral);
-    width: var(--row-size);
-    height: var(--row-size);
-    margin: var(--element-margin);
+    width: 80px;
+    height: 40px;
+    margin: 10px 5px;
     transition: transform 0.2s ease-in-out;
 }
 
 button:hover {
-    transform: scale(1.1);
+    transform: scale(1.04);
 }
 
 button:active {
-    transform: scale(0.9);
-}
- 
-
-
-
-
-.calculator,
-.row {
-    display: flex;
-    justify-items: center;
-    align-items: center;
+    transform: scale(0.96);
 }
 
-.calculator {
-    flex-direction: column;
-    background-color: var(--fill);
-    border-radius: 20px;
-    padding: var(--element-margin);
-}
-
-.screen {
-    display: flex;
-    justify-content: end;
-    height: var(--row-size);
-    width: calc(100% - var(--element-margin) * 2);
-    margin: var(--element-margin);
-    background: var(--neutral);
-    border-radius: 10px;
+.operator,
+.special {
+    background-color: var(--secondary);
 }
 
 .number {
-    background: var(--primary);
+    background-color: var(--primary);
 }
 
-.operator {
-    background: var(--accent);
+#delete,
+#clear {
+    width: 180px;
+    background-color: var(--primary);
 }
 
-.special {
-    background: var(--secondary);
+#delete:hover,
+#clear:hover {
+    transform: scale(1.02);
 }
 
-#zero {
-    width: calc( ( var(--row-size) * 2 ) + ( var(--element-margin) * 2 ) );
+#delete:active,
+#clear:active {
+    transform: scale(0.98);
 }
-*/
