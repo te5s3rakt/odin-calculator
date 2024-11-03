@@ -1,37 +1,115 @@
-const traditionalButtonLayout = [
-    clear,
-    plusmn,
-    percent,
-    divide,
-    seven,
-    eight,
-    nine,
-    times,
-    four,
-    five,
-    six,
-    minus,
-    one,
-    two,
-    three,
-    plus,
-    zero,
-    period,
-    equals
-];
+const calculator = document.querySelector('.calculator');
 
-const gaugeButtonLayout = [ 1, 0, 2, 5, 3, 4, 6, 7, 9, 8 ];
-// const gaugeButtonLayout = [ 'one', 'zero', 'two', 'five', 'three', 'four', 'six', 'seven', 'nine', 'eight' ];
+const flipButton = document.querySelector('#flip');
 
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
+function flipCalculator() {
+    const flipClass = flipButton.classList;
+    const state = calculator.classList;
+    const isFlipped = state.contains('calculator-flip');
+
+    if (isFlipped) {
+        state.remove('calculator-flip');
+        flipClass.add('flip-tooltip');
+        return;
+    };
+
+    state.add('calculator-flip');
+    flipClass.remove('flip-tooltip');
+};
+
+flipButton.addEventListener('click', () => {
+        flipCalculator()
+    });
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const isNumber = button.classList.contains('number');
+            const isOperator = button.classList.contains('operator');
+            const isModifier = button.classList.contains('modifier');
+            const isAction = button.classList.contains('action');
+            const isEvaluate = button.classList.contains('evaluate');
+            
+            if (isNumber) collectNumbers(button.id);
+            if (isOperator) setOperator(button.id);
+            if (isModifier) applyModifier(button.id);
+            if (isAction) action(button.id);
+            if (isEvaluate) evaluate();
+        });
+    });
+
+const num = {
+    zero: 0,
+    one: 1,
+    two: 2,
+    three: 3,
+    four: 4,
+    five: 5,
+    six: 6,
+    seven: 7,
+    eight: 8,
+    nine: 9
+};
+
+let
+
+
+function collectNumbers (id) {
+    if (operator == undefined) return firstOperand.push(num[id]);
+    if (operator !== undefined) return secondOperand.push(num[id]);
+};
+
+function setOperator(id) {operator = id};
+
+function applyModifier(id) {
+    if (id == 'percent') {
+        console.log('make percentage')
+    };
+
+    if (id == 'plusmn') {
+        if (operator == undefined) return firstOperand.unshift('-');
+        if (operator !== undefined) return secondOperand.unshift('-');
+        return;
+    };
 }
 
-// Example usage:
-const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const shuffledArray = shuffleArray(array);
-console.log(shuffledArray);
+function action(id) {
+    if (id == 'delete') {
+        if (operator == undefined) return firstOperand.pop();
+        if (operator !== undefined) return secondOperand.pop();
+        return;
+    };
+
+    if (id == 'clear') {
+        firstOperand = [];
+        operator = null;
+        secondOperand = [];
+        return;
+    };
+};
+
+const screen = document.querySelector('screen')
+
+function printMath() {
+    const newSpan = document.createElement('span');
+
+    if (screen.lastChild) screen.removeChild(screen.lastChild);
+
+    newSpan.textContent = convertOperandToString(firstOperand)
+}
+
+function convertOperandToString(arr) {
+    return arr.join('').replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
+
+function evaluate() {
+    const a = firstOperand.join('');
+
+    const b = secondOperand.join('');
+
+    if (operator == 'plus') console.log(a + b);
+    if (operator == 'minus') console.log(a - b);
+    if (operator == 'time') console.log(a * b);
+    if (operator == 'divide') console.log(a / b);
+};

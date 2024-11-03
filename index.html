@@ -12,12 +12,12 @@
         <div class="calculator">
             <div class="left">
                 <div class="row">
-                    <button class="special" id="clear">AC</button>
+                    <button class="action" id="clear">AC</button>
                 </div>
                 <div class="row">
                     <button class="operator" id="plus">&plus;</button>
                     <button class="operator" id="times">&times;</button>
-                    <button class="special" id="percent">%</button>
+                    <button class="modifier" id="percent">%</button>
                 </div>
                 <div class="row">
                     <button class="number" id="one">1</button>
@@ -29,11 +29,23 @@
                     <button class="number" id="eight">8</button>
                 </div>
                 <div class="row">
+                    <button class="flip-tooltip" id="flip" tooltip="We all know why you want to flip it upside down ;)">&#8635;</button>
                     <button class="number" id="period">.</button>
                 </div>
             </div>
             <div class="middle">
                 <div class="branding">
+                    <span>O</span>
+                    <span>D</span>
+                    <span>I</span>
+                    <span>N</span>
+                </div>
+                <div class="screen">
+                    <span>1,232,323,123</span>
+                    <span>+</span>
+                    <span>5318008</span>
+                </div>
+                <div class="branding product">
                     <span>M</span>
                     <span id="ath">ATH</span>
                     <span>G</span>
@@ -41,17 +53,13 @@
                     <span>G</span>
                     <span>E</span>
                 </div>
-                <div class="screen">
-                    <div class="evaluation"></div>
-                    <div class="rollerdex">1 2 3 4 5 6 7 8 9 0</div>
-                </div>
             </div>
             <div class="right">
                 <div class="row">
-                    <button class="special" id="delete">DEL</button>
+                    <button class="action" id="delete">DEL</button>
                 </div>
                 <div class="row">
-                    <button class="special" id="plusmn">&plusmn;</button>
+                    <button class="modifier" id="plusmn">&plusmn;</button>
                     <button class="operator" id="divide">&divide;</button>
                     <button class="operator" id="minus">&minus;</button>
                 </div>
@@ -65,7 +73,7 @@
                     <button class="number" id="zero">0</button>                   
                 </div>
                 <div class="row">  
-                    <button class="operator" id="equals">&equals;</button>
+                    <button class="evaluate" id="equals">&equals;</button>
                 </div>
             </div>
         </div>

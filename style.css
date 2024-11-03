@@ -9,10 +9,13 @@
     --element-margin: 10px;
 }
 
+
+
 body,
 .content,
 .footer,
-.calculator {
+.calculator,
+.branding {
     align-items: center;
     display: flex;
     justify-content: center;
@@ -31,6 +34,7 @@ body {
 .content {
     flex-direction: column;
     flex-grow: 1;
+    z-index: 1;
 }
 
 .footer {
@@ -45,22 +49,27 @@ body {
 .calculator {
     background: var(--fill);
     border-radius: 120px 120px 200px 200px;
-    padding: 20px;
+    padding: 15px;
+    box-shadow: 
+        0 0 5px black inset,
+        0 0 1px black inset;
+    /* transform: perspective(500px) rotateX(20deg); */
+}
+
+.calculator-flip {
+    transform: rotate(180deg);
 }
 
 .middle {
-    margin: 0 5px;
-    padding: 10px;
     background: rgba(33, 33, 33, 0.5);
     border-radius: 20px;
+    box-shadow: 0 0 2px black inset;
+    margin: 0 5px;
+    padding: 0 10px;
 }
 
 .branding {
     cursor: default;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0;
     font-size: 24px;
 }
 
@@ -68,24 +77,38 @@ body {
     padding: 2px;
 }
 
+.product {
+    color: var(--secondary);
+}
+
 #ath {
-    letter-spacing: 2px;
-    font-size: 12px;
+    color: var(--primary);
+    font-size: 14px;
     font-style: italic;
+    letter-spacing: 4px;
 }
 
 .screen {
-    border-radius: 10px;
-    background: var(--neutral);
-    width: 260px;
+    align-items: flex-end;
     aspect-ratio: 1 / 1;
+    background: var(--neutral);
+    border-radius: 10px;
+    box-shadow: 0 0 2px whitesmoke inset;
+    display: flex;
+    flex-direction: column;
+    font-size: 36px;
+    justify-content: center;
+    letter-spacing: 4px;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    padding: 5px;
+    text-align: right;
+    width: 260px;
+    font-family: 'Digital-7';
 }
 
-.evaluation {
-    
-}
-
-.rollerdex {
+.screen * {
+    max-width: 260px;
 }
 
 .left .row {
@@ -99,16 +122,28 @@ body {
 }
 
 button {
-    cursor: pointer;
+    background-color: var(--primary);
+    border-radius: 10px;
     border: none;
+    box-shadow:
+        0 0 5px black,
+        0 0 1px black inset;
+    color: var(--neutral);
+    cursor: pointer;
     font-size: 30px;
     font-weight: 900;
-    border-radius: 10px;
-    color: var(--neutral);
-    width: 80px;
     height: 40px;
     margin: 10px 5px;
     transition: transform 0.2s ease-in-out;
+    width: 80px;
+}
+
+.left button {
+    rotate: 5deg;
+}
+
+.right button {
+    rotate: -5deg;
 }
 
 button:hover {
@@ -120,26 +155,87 @@ button:active {
 }
 
 .operator,
-.special {
+.evaluate,
+.modifier {
     background-color: var(--secondary);
 }
 
-.number {
-    background-color: var(--primary);
+.action {
+    width: 170px;
 }
 
-#delete,
-#clear {
-    width: 180px;
-    background-color: var(--primary);
-}
-
-#delete:hover,
-#clear:hover {
+.action:hover,
+.evaluate:hover {
     transform: scale(1.02);
 }
 
-#delete:active,
-#clear:active {
+.action:active,
+.evaluate:active {
     transform: scale(0.98);
+}
+
+#equals {
+    width: 130px;
+}
+
+#flip {
+    background: none;
+    border: none;
+    box-shadow: none;
+    color: var(--fill);
+    cursor: pointer;
+    font-size: 50px;
+    font-weight: 900;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    text-shadow: 0 0 2px black;
+    transform: none;
+    transition: transform 0.2s ease-in-out;
+    width: 80px;
+}
+
+#flip:hover {
+    color: var(--secondary);
+}
+
+.flip-tooltip:hover:after {
+    letter-spacing: 2px;
+    background: rgba(33, 33, 33, 0.5);
+    border-radius: 5px;
+    color: var(--secondary);
+    content: attr(tooltip);
+    font-size: 12px;
+    font-weight: 100;
+    opacity: 1;
+    padding: 5px;
+    position: absolute;
+    right: 10%;
+    text-align: right;
+    top: 40%;
+    transform: translateX(-50%) rotate(-5deg);
+    transition: opacity 0.3s;
+    visibility: visible;
+    white-space: normal;
+    width: 130px;
+    z-index: 1;
+}
+
+.flip-tooltip:after {
+    opacity: 0;
+    visibility: hidden;
+    white-space: nowrap;
+}
+
+.math-drop {
+    color: var(--primary);
+    position: absolute;
+    top: -50px;
+    transition: top 2s linear;
+    z-index: 0;
+}
+
+@font-face {
+    font-family: 'Digital-7';
+    src: url('fonts/digital_7/digital-7.ttf') format('truetype');
 }
