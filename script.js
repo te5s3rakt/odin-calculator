@@ -21,53 +21,6 @@ flipButton.addEventListener('click', () => {
         flipCalculator()
     });
 
-// const screen = document.querySelector('.screen');
-
-// function printNumber(button, wrap) {
-//     if (wrap || screen.lastChild == undefined) screen.appendChild(document.createElement('span'));
-    
-//     screen.lastChild.textContent += button.textContent;
-// };
-
-// const numberButtons = document.querySelectorAll('button.number');
-
-// numberButtons.forEach((button) => {
-//         button.addEventListener('click', () => {
-//             operand += num[button.id];
-//             printScreen(button);
-//         });
-//     });
-
-// const operatorButtons = document.querySelectorAll('button.operator')
-
-// operatorButtons.forEach((button) => {
-//         button.addEventListener('click', () => {
-//             operator = button.id
-//             printScreen(button, true);
-//             evaluate();
-//         });
-//     });
-
-// const evaluateButton = document.querySelector('button.evaluate')
-
-// evaluateButton.addEventListener('click', () => {
-//     evaluate();
-// });
-
-// function evaluate() {
-//         let a = Number(result);
-//         let b = Number(operand);
-    
-//         if (operator == 'plus') a += b;
-//         if (operator == 'minus') a -= b;
-//         if (operator == 'times') a *= b;
-//         if (operator == 'divide') a /= b;
-        
-//         operator = null;
-//         operand = ''
-//         printScreen(result, true);
-//     };
-
 const numberButtons = document.querySelectorAll('button.number');
 
 numberButtons.forEach((button) => {
