@@ -41,7 +41,9 @@ body {
     font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 12px;
     height: 40px;
+    min-height: 40px;
     width: 100vw;
+    z-index: 1;
 }
 
 .calculator {
@@ -228,9 +230,10 @@ button:active {
 
 .math-drop {
     color: var(--primary);
+    opacity: 50%;
     position: absolute;
     top: -50px;
-    transition: top 2s linear;
+    transition: top 3s linear;
     z-index: 0;
 }
 

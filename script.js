@@ -73,6 +73,8 @@ function printValue( value ) {
     createNumberPrintSpace();
 
     screen.lastChild.textContent += value;
+
+    mathRain ( value );
 };
 
 function createNumberPrintSpace() {
@@ -92,6 +94,7 @@ operandButtons.forEach(( button ) => {
     });
 
 function printOperand( button ) {
+    const value = button.textContent;
     const printCount = screen.childElementCount;
 
     if ( printCount == 3 ) evaluate();
@@ -102,9 +105,11 @@ function printOperand( button ) {
 
     const span = document.createElement('span');
     span.classList.add(button.id);
-    span.textContent = button.textContent;
+    span.textContent = value;
 
     screen.appendChild( span );
+
+    mathRain ( value );
 };
 
 evaluateButton.addEventListener('click', evaluate );
@@ -154,6 +159,8 @@ function printResult( value ) {
     };
 
     screen.appendChild( print );
+
+    mathRain ( value );
 };
 
 clearButton.addEventListener( 'click', resetScreen );
@@ -250,4 +257,35 @@ function translateKeyboard( key ) {
     };
 
     if( map[ key ] != undefined ) document.querySelector( '#' + map[ key ] ).click();
+};
+
+function mathRain( value ) {
+    const chars = value.toString().split('');
+
+    chars.forEach( ( char, index ) => {
+            setTimeout(
+                function() { mathDroplet( char ) },
+                index * 50
+            );
+        });
+};
+
+function mathDroplet( value ) {
+    const droplet = document.createElement( 'div' );
+    droplet.className = 'math-drop';
+    droplet.textContent = value;
+    droplet.style.left = Math.random() * window.innerWidth + 'px';
+
+    document.body.appendChild( droplet );
+
+    droplet.addEventListener( 'transitionend', function() { 
+            if ( parseInt( droplet.style.top ) >= window.innerHeight ) {
+                document.body.removeChild( droplet );
+            }
+        });
+
+    setTimeout(
+        function() { droplet.style.top = window.innerHeight + 'px' },
+        50
+    );
 }
