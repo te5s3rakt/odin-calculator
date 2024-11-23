@@ -140,7 +140,7 @@ function printResult( value ) {
     let print = document.createElement('span');
 
     if ( isFinite( value ) ) {
-        print.textContent = value.toFixed( 10 );
+        print.textContent = Number(value.toFixed( 10 ));
     } else {
         screen.id = 'error';
 
