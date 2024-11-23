@@ -46,16 +46,16 @@ buttons.forEach(( button ) => {
 
 numberButtons.forEach(( button ) => {
         button.addEventListener( 'click', function() {
-            collectNumber( button );
+            collectNumber( button.id );
         })
     });
 
-function collectNumber( button ) {
+function collectNumber( id ) {
     const number = { zero: 0, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9 };
 
-    let isNumber = number[button.id] != undefined;
+    let isNumber = number[ id ] != undefined;
 
-    if ( isNumber ) printValue( number[ button.id ] );
+    if ( isNumber ) printValue( number[ id ] );
 
     try {
         activeNumberIsFloat = screen.lastChild.textContent.includes( '.' );
@@ -64,7 +64,7 @@ function collectNumber( button ) {
         activeNumberIsFloat = false;
     }
 
-    if ( button.id == 'period' && !activeNumberIsFloat ) {
+    if ( id == 'period' && !activeNumberIsFloat ) {
         printValue( '.' );
     };
 };
@@ -208,3 +208,46 @@ function percentNumber() {
 
     print.textContent = value / 100;
 };
+
+document.addEventListener( 'keydown', function( event ) {
+    event.stopPropagation();
+    translateKeyboard( event.key );
+});
+
+function translateKeyboard( key ) {
+    const map = {
+        '0': 'zero',
+        '1': 'one',
+        '2': 'two',
+        '3': 'three',
+        '4': 'four',
+        '5': 'five',
+        '6': 'six',
+        '7': 'seven',
+        '8': 'eight',
+        '9': 'nine',
+        '.': 'period',
+
+        '+': 'plus',
+        '-': 'minus',
+        '*': 'times',
+        'x': 'times',
+        '/': 'divide',
+        
+        '(': 'plusmn',
+        ')': 'plusmn',
+        '%': 'percent',
+        '=': 'equals',
+        'Enter': 'equals',
+
+        'Backspace': 'delete',
+        'Escape': 'clear',
+
+        'ArrowRight': 'flip',
+        'ArrowDown': 'flip',
+        'ArrowUp': 'flip',
+        'ArrowLeft': 'flip'
+    };
+
+    if( map[ key ] != undefined ) document.querySelector( '#' + map[ key ] ).click();
+}

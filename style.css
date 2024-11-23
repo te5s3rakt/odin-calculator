@@ -9,8 +9,6 @@
     --element-margin: 10px;
 }
 
-
-
 body,
 .content,
 .footer,
@@ -136,6 +134,7 @@ button {
     margin: 10px 5px;
     transition: transform 0.2s ease-in-out;
     width: 80px;
+    outline: none;
 }
 
 .left button {
