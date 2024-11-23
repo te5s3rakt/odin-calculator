@@ -1,6 +1,26 @@
 const calculator = document.querySelector('.calculator');
 
+const screen = document.querySelector( '.screen' );
+
+const buttons = document.querySelectorAll( 'button' );
+
 const flipButton = document.querySelector('#flip');
+
+const numberButtons = document.querySelectorAll( 'button.number' );
+
+const operandButtons = document.querySelectorAll( 'button.operator' );
+
+const evaluateButton = document.querySelector( '#equals' )
+
+const clearButton = document.querySelector( '#clear' )
+
+const deleteButton = document.querySelector( '#delete' )
+
+const negativeButton = document.querySelector( '#plusmn' );
+
+const percentButton = document.querySelector( '#percent' );
+
+flipButton.addEventListener('click', flipCalculator );
 
 function flipCalculator() {
     const flipClass = flipButton.classList;
@@ -17,192 +37,15 @@ function flipCalculator() {
     flipClass.remove('flip-tooltip');
 };
 
-flipButton.addEventListener('click', () => {
-        flipCalculator()
+buttons.forEach(( button ) => {
+        button.addEventListener( 'click', function() {
+            if ( button.id == 'flip' ) return;
+            if ( screen.id == 'error' ) resetScreen();
+        })
     });
 
-// const numberButtons = document.querySelectorAll('button.number');
-
-// numberButtons.forEach((button) => {
-//         button.addEventListener('click', () => {
-//             resetScreen(true);
-//             collectNumber(button);
-//         })
-//     });
-
-// const screen = document.querySelector('.screen');
-
-// function collectNumber(button) {
-//     const value = { zero: 0, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, period: '.' };
-
-//     let newChar = value[button.id];
-
-//     if (
-//         screen.childElementCount == 0 ||
-//         screen.childElementCount == 2
-//     ) screen.appendChild(document.createElement('span'));
-
-//     let currentValue = screen.lastChild.textContent
-
-//     if (
-//         currentValue.includes('.') &&
-//         newChar == '.'
-//     ) newChar = '';
-
-//     if (
-//         currentValue.length == 0 &&
-//         newChar == '.'
-//     ) currentValue = 0;
-
-//     screen.lastChild.textContent = currentValue + newChar
-// };
-
-// const operatorButtons = document.querySelectorAll('button.operator')
-
-// operatorButtons.forEach((button) => {
-//         button.addEventListener('click', () => {
-//             resetScreen();
-//             collectOperand(button);
-//         });
-//     });
-
-// function collectOperand(button) {
-//     let newSpan = document.createElement('span')
-
-//     if ( screen.childElementCount == 3 ) evaluate();
-
-//     if ( screen.childElementCount == 1 ) screen.appendChild(newSpan);
-
-//     screen.lastChild.textContent = button.textContent;
-//     screen.lastChild.classList.add(button.id);
-// }
-
-// function evaluate() {
-//     let a = Number(screen.children[0].textContent);
-//     let operand = screen.children[1].classList[0];
-//     let b = Number(screen.children[2].textContent);
-
-//     let result
-
-//     switch (operand) {
-//         case 'plus':
-//             result = a + b;
-//             break;
-//         case 'minus':
-//             result = a - b;
-//             break;
-//         case 'times':
-//             result = a * b;
-//             break;
-//         case 'divide':
-//             result = a / b;
-//             break;
-//     };
-
-//     while (screen.firstChild) screen.removeChild(screen.firstChild);
-    
-//     let printResult = document.createElement('span');
-
-//     if (isFinite(result)) {
-//         screen.id = 'result';
-//         printResult.textContent = result;
-//     };
-
-//     if (result == 'Infinity') {
-//         screen.id = 'error';
-//         printResult.innerHTML = "F**kin'<br>huge<br>mate!";
-//     };
-
-//     if (result == 'NaN') {
-//         screen.id = 'error';
-//         printResult.innerHTML = "Great work!<br>you broke it.";
-//     };
-
-//     screen.appendChild(printResult);
-// };
-
-// const evaluateButton = document.querySelector('#equals')
-
-// evaluateButton.addEventListener('click', () => {
-//     resetScreen();
-//     if(screen.childElementCount == 3) evaluate();
-// });
-
-// const clearButton = document.querySelector('#clear')
-
-// clearButton.addEventListener('click', () => {
-//     resetScreen();
-//     while (screen.firstChild) screen.removeChild(screen.firstChild);
-// });
-
-// function resetScreen(number) {
-//     if (screen.id == 'error') {
-//         while (screen.firstChild) screen.removeChild(screen.firstChild);
-//     };
-
-//     if (screen.id == 'result' && !number) {
-//         screen.appendChild(document.createElement('span'))
-//     };
-
-//     if (screen.id == 'result' && number) {
-//         while (screen.firstChild) screen.removeChild(screen.firstChild);
-//     };
-    
-//     screen.removeAttribute('id');
-// }
-
-// const negativeButton = document.querySelector('#plusmn')
-
-// negativeButton.addEventListener('click', () => {
-//         resetScreen();
-//         negateNumber();
-//     });
-
-// function negateNumber() {
-//     if (
-//         screen.childElementCount == 0 ||
-//         screen.childElementCount == 1
-//     ) screen.appendChild(document.createElement('span'));
-
-//     let currentValue = screen.lastChild.textContent
-
-//     if ( currentValue.includes('-') ) return;
-
-//     screen.lastChild.textContent = '-' + currentValue;
-// }
-
-// const percentButton = document.querySelector('#percent')
-
-// percentButton.addEventListener('click', () => {
-//         resetScreen();
-//         percentNumber();
-//     });
-
-// function percentNumber() {
-//     let currentValue = screen.lastChild.textContent;
-
-//     screen.lastChild.textContent = currentValue / 100;
-// }
-
-const screen = document.querySelector( '.screen' );
-
-const numberButtons = document.querySelectorAll( 'button.number' );
-
-const operandButtons = document.querySelectorAll( 'button.operator' );
-
-const evaluateButton = document.querySelector( '#equals' )
-
-const clearButton = document.querySelector( '#clear' )
-
-const deleteButton = document.querySelector( '#delete' )
-
-const negativeButton = document.querySelector( '#plusmn' );
-
-const percentButton = document.querySelector( '#percent' );
-
 numberButtons.forEach(( button ) => {
-        button.addEventListener( 'click', () => {
-            if ( screen.id == 'error' ) resetScreen();
+        button.addEventListener( 'click', function() {
             collectNumber( button );
         })
     });
@@ -238,24 +81,24 @@ function createNumberPrintSpace() {
     if ( printCount == 0 || printCount == 2 ) {
         screen.appendChild( document.createElement('span') )
     };
+
+    return printCount;
 };
 
 operandButtons.forEach(( button ) => {
-        button.addEventListener( 'click', () => {
-            if ( screen.id == 'error' ) resetScreen();
+        button.addEventListener( 'click', function() {
             printOperand( button );
         })
     });
 
 function printOperand( button ) {
-    if ( screen.childElementCount == 3 ) evaluate();
+    const printCount = screen.childElementCount;
 
-    if ( screen.childElementCount == 2 ) screen.removeChild( screen.lastChild );
+    if ( printCount == 3 ) evaluate();
 
-    if ( screen.childElementCount == 0 ) {
-        screen.appendChild( document.createElement('span') )
-        screen.lastChild.textContent = 0;
-    };
+    if ( printCount == 2 ) screen.removeChild( screen.lastChild );
+
+    if ( createNumberPrintSpace() == 0 ) screen.lastChild.textContent = 0;
 
     const span = document.createElement('span');
     span.classList.add(button.id);
@@ -264,9 +107,7 @@ function printOperand( button ) {
     screen.appendChild( span );
 };
 
-evaluateButton.addEventListener('click', () => {
-    evaluate();
-});
+evaluateButton.addEventListener('click', evaluate );
 
 function evaluate() {
     let a = Number( screen.children[0].textContent );
@@ -299,7 +140,7 @@ function printResult( value ) {
     let print = document.createElement('span');
 
     if ( isFinite( value ) ) {
-        print.textContent = value;
+        print.textContent = value.toFixed( 10 );
     } else {
         screen.id = 'error';
 
@@ -313,9 +154,7 @@ function printResult( value ) {
     screen.appendChild( print );
 };
 
-clearButton.addEventListener( 'click', () => {
-        resetScreen();
-    });
+clearButton.addEventListener( 'click', resetScreen );
 
 function resetScreen() {
     while (screen.firstChild) screen.removeChild(screen.firstChild);
@@ -323,9 +162,7 @@ function resetScreen() {
     screen.id = '';
 };
 
-deleteButton.addEventListener( 'click', () => {
-        deleteCharacter();
-    });
+deleteButton.addEventListener( 'click', deleteCharacter );
 
 function deleteCharacter() {
     const print = screen.lastChild;
@@ -342,33 +179,30 @@ function deleteCharacter() {
     if ( value.length > 1 ) print.textContent = value.slice( 0, -1 );
 };
 
-negativeButton.addEventListener( 'click', () => {
-    if ( screen.id == 'error' ) resetScreen();
-    negateNumber();
-});
+negativeButton.addEventListener( 'click', negateNumber );
 
 function negateNumber() {
     createNumberPrintSpace();
 
-    let currentValue = screen.lastChild.textContent;
+    const print = screen.lastChild;
 
-    if ( currentValue.includes( '-' ) ) {
-        screen.lastChild.textContent = currentValue.slice( 1 );
+    let value = print.textContent;
+
+    if ( value.includes( '-' ) ) {
+        print.textContent = value.slice( 1 );
     } else {
-        screen.lastChild.textContent = '-' + currentValue;
+        print.textContent = '-' + value;
     };
 };
 
-percentButton.addEventListener( 'click', () => {
-    if ( screen.id == 'error' ) resetScreen();
-    percentNumber();
-});
+percentButton.addEventListener( 'click', percentNumber );
 
 function percentNumber() {
     createNumberPrintSpace();
-
+    
     const print = screen.lastChild;
+
     let value = Number(print.textContent) + 0;
 
-    screen.lastChild.textContent = value / 100;
+    print.textContent = value / 100;
 };
