@@ -110,6 +110,8 @@ function printOperand( button ) {
 evaluateButton.addEventListener('click', evaluate );
 
 function evaluate() {
+    if ( screen.childElementCount != 3 ) return;
+
     let a = Number( screen.children[0].textContent );
     let operand = screen.children[1].classList[0];
     let b = Number( screen.children[2].textContent );
