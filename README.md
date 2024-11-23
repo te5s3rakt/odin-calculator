@@ -12,4 +12,8 @@ As usual with these things, there are elements of this project that are not goin
 
 2. Went for a N-Gage inspired design. No idea why. Just did. The colors aren't authentic though. Why this particular shade of ugly Green and baby Pink? Well the wife walked past wearing these colors while I was setting the hex variables in my css lol.
 
-3. I kept hitting road blocks with the calculator logic. I have the desire to make the code elegant, without first making it functional, so kept coding myself into corners, that while looking elegent, was not functional, then getting frustrated, and scraping the lot to try another approach. What worked in the end was psuedo-coding everything, and when I was happy, layering in functional code from there.
+3. I kept hitting road blocks with the calculator logic. I had the desire to make the code elegant, without first making it functional, so kept coding myself into corners, that while i felt looked elegent, was not at all functional, then getting frustrated and scrapping the lot to try another approach. What worked in the end was psuedo-coding everything, and when I was happy, layering in functional code from there.
+
+4. Math rain? I don't even know why. Just looked cool.
+
+5. I feel like I should get committing more often. Perhaps next assignment try commit after writing every function.
